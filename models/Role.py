@@ -7,12 +7,12 @@ class Role(Enum):
     Args:
         Enum (String)
     """
-
-    CLIENT = "Client",
-    PREMIUM_CLIENT = "Premium Client",
-    FINANCIAL_PLANNER = "Financial Planner",
-    FINANCIAL_ADVISOR = "Financial Advisor",
-    INVESTMENT_ANALYST = "Investment Analyst",
-    TECHNICAL_SUPPORT = "Technical Support",
-    TELLER = "Teller",
+    
+    CLIENT = "Client"
+    PREMIUM_CLIENT = "Premium Client"
+    FINANCIAL_PLANNER = "Financial Planner"
+    FINANCIAL_ADVISOR = "Financial Advisor"
+    INVESTMENT_ANALYST = "Investment Analyst"
+    TECHNICAL_SUPPORT = "Technical Support"
+    TELLER = "Teller"
     COMPLIANCE_OFFICER = "Compliance Officer"

@@ -1,0 +1,9 @@
+Role	Personal Account Balance	Personal Investment Portfolio	Advisor Contact Details	Planner Contact Details	Analyst Contact Details	Client Account Balance	Client Investment Portfolio	Money Markey Instruments	Private Consumer Instruments	Derivatives Trading	View Client Information	Request Client Account Access	Validate Investment Portfolio Modifications
+Client	R	R	R										
+Premium Client	R	RW	R	R	R								
+Financial Planner						R	RW	R	R				
+Financial Advisor						R	RW		R				
+Investment Analyst						R	RW	R	R	R			
+Technical Support											R	RW	
+Teller						R							
+Compliance Officer						R							RW

@@ -26,6 +26,6 @@ class User:
         return self._nickname
     
     def getRole(self) -> Role:
-        return self._role
+        return self._role.value
     
      

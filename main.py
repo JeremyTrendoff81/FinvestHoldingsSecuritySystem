@@ -1,5 +1,6 @@
 from models.User import User
 from models.Role import Role
+from models.ReferenceMonitor import ReferenceMonitor
 
 def initDemoUsers() -> list:
     userList = []
@@ -58,6 +59,8 @@ def main():
     users = initDemoUsers()
 
     for user in users:
-        print(user.getUsername())
+        print(user.getRole())
 
 main()
+
+ReferenceMonitor()
