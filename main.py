@@ -58,9 +58,12 @@ def initDemoUsers() -> list:
 def main():
     users = initDemoUsers()
 
+    referenceMonitor = ReferenceMonitor()
+
     for user in users:
+        print(user.getNickname())
         print(user.getRole())
+        print(referenceMonitor.getPermissionsForRole(user.getRole()))
+        print()
 
 main()
-
-ReferenceMonitor()
