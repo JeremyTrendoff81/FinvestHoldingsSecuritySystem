@@ -41,6 +41,6 @@ class User:
         Returns:
             Role: The role of the user.
         """
-        return self._role.value
+        return self._role
     
      

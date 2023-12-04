@@ -11,7 +11,7 @@ class ReferenceMonitor:
         Constructor. Retrieves the permissions matrix from system resources. 
         """
 
-        with open("System Resources/PermissionsMatrix.csv", "r") as matrixCSV:
+        with open("system-resources/PermissionsMatrix.csv", "r") as matrixCSV:
             reader = csv.DictReader(matrixCSV)
             data = [row for row in reader]
             matrixDictonary = {}
@@ -29,17 +29,19 @@ class ReferenceMonitor:
             role (Role): The role to target.
 
         Returns:
-            list: A list of string tuples formatted (Permission Name, Permitted Action)
+            list: A list of string tuples formatted (Action Name, Read/Write Permissions)
         """
         permissionsList = []
 
-        if (role in self._permissionsMatrix):
-            for permission in self._permissionsMatrix.get(role):
-                if ('RW' in self._permissionsMatrix.get(role)[permission]):
+        roleVal = role.value
+
+        if (roleVal in self._permissionsMatrix):
+            for permission in self._permissionsMatrix.get(roleVal):
+                if ('RW' in self._permissionsMatrix.get(roleVal)[permission]):
                     permissionsList.append((permission, "Read and Write"))
-                elif('R' in self._permissionsMatrix.get(role)[permission]):
+                elif('R' in self._permissionsMatrix.get(roleVal)[permission]):
                     permissionsList.append((permission, "Read"))
-                elif('W' in self._permissionsMatrix.get(role)[permission]):
+                elif('W' in self._permissionsMatrix.get(roleVal)[permission]):
                     permissionsList.append((permission, "Write"))
         
         return permissionsList

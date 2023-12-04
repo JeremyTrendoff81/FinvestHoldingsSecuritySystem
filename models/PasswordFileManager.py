@@ -1,22 +1,22 @@
 import bcrypt
-import os
+from models.Role import Role
 
 class PasswordFileManager():
     """The PasswordFileManager Class will be responsible for password encryption and providing methods to add and retrieve records from the password file."""
 
     def __init__(self) -> None:
-        self._passwdFilePath = "System Resources/passwd.txt"
+        self._passwdFilePath = "system-resources/passwd.txt"
     
-    def writeToFile(self, userId: str, password: str):
+    def writeToFile(self, userId: str, password: str, role: Role, nickname: str):
         """Write a new record into the password file. 
 
         Args:
             userId (str): The user id to add. 
             password (str): the password to encrypt.
+            role (Role): The role of the user.
+            nickname (str): The nickname of the User.
         """
-
         try:
-
             file = open(self._passwdFilePath, "a")
 
             # bcrypt encryption examples: https://www.geeksforgeeks.org/hashing-passwords-in-python-with-bcrypt/
@@ -24,20 +24,19 @@ class PasswordFileManager():
             salt = bcrypt.gensalt()
             hash = bcrypt.hashpw(bytes, salt)
 
-            file.write(userId + ":" + str(hash.decode()) + "\n")
+            file.write(userId + ":" + str(hash.decode()) + ":" + role.value + ":" + nickname + "\n")
             file.close()
-
         except:
             return
     
-    def retrieveRecordFromFileByUserId(self, userId) -> list:
+    def retrieveRecordFromFileByUserId(self, userId: str) -> list:
         """Retrieve a whole record from the password file.
 
         Args:
             userId (_type_): The record to retrieve.
 
         Returns:
-            list: The record as a list. User ID: index 0, Password: index 1.
+            list: The record as a list. User ID: index 0, Password: index 1, Role: index 2, Nickname: index 3.
         """
         try: 
             file = open(self._passwdFilePath, "r")
@@ -45,40 +44,16 @@ class PasswordFileManager():
             for record in file:
                 data = record.split(":")
                 if (data[0] == userId):
-                    data[1] = data[1].strip()
+                    data[2] = Role(data[2])
+                    data[3] = data[3].strip()
                     file.close()
                     return data
         
             file.close()
             return []
-        
         except: 
-            return []
-    
-    def retrievePasswordByUserId(self, userId) -> str:
-        """Retrieve a password for a user id.
-
-        Args:
-            userId (_type_): The user's id.
-
-        Returns:
-            str: The hashed password.
-        """
-        try: 
-
-            file = open(self._passwdFilePath, "r")
-
-            for record in file:
-                data = record.split(":")
-                if (data[0] == userId):
-                    file.close()
-                    return data[1].strip()
-            
-            file.close()
-            return ""
-    
-        except:
-            return ""
+            print("Error!")
+            return None
     
     def comparePasswords(self, plaintext: str, hashed: str) -> bool:
         """Return if the plaintext and the hashed passwords are the same. 
@@ -94,9 +69,7 @@ class PasswordFileManager():
         Args:
             userId (str): The user id to delete. 
         """
-        
         try:
-
             with open(self._passwdFilePath , "r") as file:
                 lines = file.readlines()
             
@@ -105,6 +78,5 @@ class PasswordFileManager():
                     data = record.split(":")
                     if (data[0] != userId):  
                         file.write(record)
-        
         except:
             return

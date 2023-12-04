@@ -1,0 +1,17 @@
+
+mischa:$2b$12$636JQtchYwK5GSkkLAYOLerNZ7ZuHw.awjRAZtg.QqAmWTQeET7WO:Client:Mischa Lowery
+veronica:$2b$12$TcmTt.VRsc6u6/GYfxEuyem0qWm5RFDmNUrnW22xvRHHVW1Fv4WFe:Client:Veronica Perez
+winston:$2b$12$fAowXDyVmg.XWevqAFntNuWpRlWAafyTi.cTK15qZZPPlznL7941K:Teller:Winston Callahan
+kelan:$2b$12$S9jkFXiZGggnXeJlJeR5J.I3nGbarHJ78Jwm3jn90WU./o5yw8LoK:Teller:Kelan Gough
+nelson:$2b$12$RBT1PxEZVEtgR/.4sTktK.3WV7IDhzB614T/m21iq3zntfiYSS9.e:Financial Advisor:Nelson Wilkins
+kelsie:$2b$12$Pz9p51IRYSvPxibRZZEFX.OZPHrv/pReackUoqRn3ROgGVut2PmuK:Financial Advisor:Kelsie Chang
+howard:$2b$12$VfyxzUaFCbvy6LvFC2W3fuJqmbYApybHpPfPCODr51qZ.WniTudJq:Compliance Officer:Howard Linker
+stefania:$2b$12$P18S9Ucs4rEAZ8a0ntiPiuSnfJe88Ls97SGeOyEokQr2u9xuIt.XC:Compliance Officer:Stefania Smart
+willow:$2b$12$zatMXhqrWVnZ9KN/TkLoA.19hSsRHbSnlRY2TTSB.mb.Gln5YWMV2:Premium Client:Willow Garza
+nala:$2b$12$x6DZbUTAdwqp1U/SJa5nY.Ow9jZntHBrccWQpzgK6Ze4PfUaRs5Ku:Premium Client:Nala Preston
+stacy:$2b$12$uOWNAxwzpN.tXs2Tba.qTeeJAaxErywnzxSZmqNTpXxWvZf8ddQyi:Investment Analyst:Stacy Kent
+keikilana:$2b$12$fdDp0e8unib4DPmGlK/ea.LWcvslyWg3xdcEvmD6iOJC8NFLJwR3K:Investment Analyst:Keikilana Kapahu
+kodi:$2b$12$XkyEiQtBVsDld.WCfODzzePwUKh6tE.nF8ToFfQ/Yvnvv.0pC5rz2:Financial Planner:Kodi Matthews
+malikah:$2b$12$AZnKqvtLHPuCknND0XN72u8fzhJhpW01ZqEVN3pZrnfMuWaumN4ti:Financial Planner:Malikah Wu
+caroline:$2b$12$spJRCZA8BLv8wvIHC2Hf6.bIP.3B7Z.Jo6IV.vFyg7m4sENDaMeCq:Technical Support:Caroline Lopez
+pawel:$2b$12$MCKIHyV1ndgBNjAU.24k8OQR5pq6hy9lqkZdo71/FqBVByiTlBKzW:Technical Support:Pawel Barclay
