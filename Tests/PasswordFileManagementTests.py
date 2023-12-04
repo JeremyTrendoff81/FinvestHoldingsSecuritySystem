@@ -23,8 +23,8 @@ def testAddRetrieveAndDeleteRecord():
     print("Actual User Id: " + str(record[0]))
     assert(record[0] == testUserId)
 
-    print("Actual User Role: " + str(record[2]))
-    assert(record[2] == Role.CLIENT)
+    print("Actual User Role: " + str(record[3]))
+    assert(record[3] == Role.CLIENT)
 
     passwdManager.deleteRecordByUserId(testUserId)
     record = passwdManager.retrieveRecordFromFileByUserId(testUserId)
@@ -40,10 +40,8 @@ def testComparisonOfPlaintextAndHashedPasswords():
 
     passwdManager.writeToFile(testUserId, testPasswd, Role.CLIENT, testUserId)
 
-    hashedPassword = passwdManager.retrieveRecordFromFileByUserId(testUserId)[1]
-
-    print("Passwords are the same?: " + str(passwdManager.comparePasswords(testPasswd, hashedPassword)))
-    assert(passwdManager.comparePasswords(testPasswd, hashedPassword) == True)
+    print("Passwords are the same?: " + str(passwdManager.comparePasswords(testUserId, testPasswd)))
+    assert(passwdManager.comparePasswords(testUserId, testPasswd) == True)
 
     passwdManager.deleteRecordByUserId(testUserId)
 

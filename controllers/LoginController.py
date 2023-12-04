@@ -54,15 +54,12 @@ class LoginController:
             (bool, User): (If login was successful, The User that logged in)
         """
         if not self.accountAlreadyExists(userId):
-            print("Account Doesn't Exist")
             return (False, None)
 
         record = self._passwordFileManager.retrieveRecordFromFileByUserId(userId)
 
-        storedPassword = record[1]
-
-        if self._passwordFileManager.comparePasswords(password, storedPassword): 
-            user = User(userId, record[3], record[2])
+        if self._passwordFileManager.comparePasswords(userId, password): 
+            user = User(userId, record[4], record[3])
             return (True, user) 
         
         return (False, None)

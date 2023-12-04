@@ -1,4 +1,5 @@
-import bcrypt
+import hashlib
+import random
 from models.Role import Role
 
 class PasswordFileManager():
@@ -19,12 +20,11 @@ class PasswordFileManager():
         try:
             file = open(self._passwdFilePath, "a")
 
-            # bcrypt encryption examples: https://www.geeksforgeeks.org/hashing-passwords-in-python-with-bcrypt/
-            bytes = password.encode('utf_8')
-            salt = bcrypt.gensalt()
-            hash = bcrypt.hashpw(bytes, salt)
+            salt = str(random.getrandbits(12))
+            password = salt + password
+            hashedPassword = hashlib.sha512(password.encode())
 
-            file.write(userId + ":" + str(hash.decode()) + ":" + role.value + ":" + nickname + "\n")
+            file.write(userId + ":" + salt + ":" + hashedPassword.hexdigest() + ":" + role.value + ":" + nickname + "\n")
             file.close()
         except:
             return
@@ -36,7 +36,7 @@ class PasswordFileManager():
             userId (_type_): The record to retrieve.
 
         Returns:
-            list: The record as a list. User ID: index 0, Password: index 1, Role: index 2, Nickname: index 3.
+            list: The record as a list. User ID: index 0, Salt: index 1, Password: index 2, Role: index 3, Nickname: index 4.
         """
         try: 
             file = open(self._passwdFilePath, "r")
@@ -44,8 +44,8 @@ class PasswordFileManager():
             for record in file:
                 data = record.split(":")
                 if (data[0] == userId):
-                    data[2] = Role(data[2])
-                    data[3] = data[3].strip()
+                    data[3] = Role(data[3])
+                    data[4] = data[4].strip()
                     file.close()
                     return data
         
@@ -55,13 +55,22 @@ class PasswordFileManager():
             print("Error!")
             return None
     
-    def comparePasswords(self, plaintext: str, hashed: str) -> bool:
+    def comparePasswords(self, userId: str, plaintext: str) -> bool:
         """Return if the plaintext and the hashed passwords are the same. 
 
         Returns:
             _type_: _description_
         """    
-        return bcrypt.checkpw(plaintext.encode('utf-8'), hashed.encode())
+        record = self.retrieveRecordFromFileByUserId(userId)
+
+        salt = record[1]
+        storedPassword = record[2] 
+        passwordToCompare = salt + plaintext
+        passwordToCompareHashed = hashlib.sha512(passwordToCompare.encode())
+
+        return storedPassword == passwordToCompareHashed.hexdigest()
+
+        
     
     def deleteRecordByUserId(self, userId: str):
         """Delete a record from the passwd file.
