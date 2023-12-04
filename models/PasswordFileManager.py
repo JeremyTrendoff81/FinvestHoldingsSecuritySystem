@@ -20,7 +20,7 @@ class PasswordFileManager():
         try:
             file = open(self._passwdFilePath, "a")
 
-            salt = str(random.getrandbits(12))
+            salt = str(random.getrandbits(128))
             password = salt + password
             hashedPassword = hashlib.sha512(password.encode())
 
@@ -52,7 +52,6 @@ class PasswordFileManager():
             file.close()
             return []
         except: 
-            print("Error!")
             return None
     
     def comparePasswords(self, userId: str, plaintext: str) -> bool:

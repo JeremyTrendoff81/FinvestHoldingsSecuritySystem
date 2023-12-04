@@ -6,7 +6,8 @@ passwdManager = PasswordFileManager()
 def runPasswdManagementTests():
     print("Running Password Management Tests...\n")
     testAddRetrieveAndDeleteRecord()
-    testComparisonOfPlaintextAndHashedPasswords()
+    testComparisonOfEqualPlaintextAndHashedPasswords()
+    testCompareUnequalPasswords()
 
 
 def testAddRetrieveAndDeleteRecord():
@@ -32,8 +33,8 @@ def testAddRetrieveAndDeleteRecord():
 
     print()
 
-def testComparisonOfPlaintextAndHashedPasswords():
-    print("Testing comparison of plaintext and hashed passwords...")
+def testComparisonOfEqualPlaintextAndHashedPasswords():
+    print("Testing comparison of the same plaintext and hashed passwords...")
 
     testUserId = "Test"
     testPasswd = "Test123"
@@ -42,6 +43,21 @@ def testComparisonOfPlaintextAndHashedPasswords():
 
     print("Passwords are the same?: " + str(passwdManager.comparePasswords(testUserId, testPasswd)))
     assert(passwdManager.comparePasswords(testUserId, testPasswd) == True)
+
+    passwdManager.deleteRecordByUserId(testUserId)
+
+    print()
+
+def testCompareUnequalPasswords():
+    print("Testing comparison of the unequal plaintext and hashed passwords...")
+
+    testUserId = "Test"
+    testPasswd = "Test123"
+
+    passwdManager.writeToFile(testUserId, testPasswd, Role.CLIENT, testUserId)
+
+    print("Passwords are the same?: " + str(passwdManager.comparePasswords(testUserId, "Incorrect")))
+    assert(passwdManager.comparePasswords(testUserId, "Incorrect") == False)
 
     passwdManager.deleteRecordByUserId(testUserId)
 

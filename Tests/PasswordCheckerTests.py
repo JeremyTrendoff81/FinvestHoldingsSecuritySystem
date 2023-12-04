@@ -40,9 +40,9 @@ def testPasswordEqualsUserId():
     print()
 
 def testPasswordFromBannedPasswordList():
-    print("Testing the banned password Qwerty123...")
+    print("Testing the banned password Qwerty123!...")
 
-    testPassword = "Qwerty123"
+    testPassword = "Qwerty123!"
     result = passwdChecker.validatePassword("testId", testPassword)
     
     print("Expected Result: False, Actual Result: " + str(result))

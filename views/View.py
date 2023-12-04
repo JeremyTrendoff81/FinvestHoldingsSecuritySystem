@@ -30,7 +30,7 @@ class View:
         Args:
             userId (str): The userId to attempt login with.
         """
-        password = input("Enter Your password: ")
+        password = input("Enter Your Password: ")
         accessGranted, user = self._loginController.login(userId, password)
 
         if not accessGranted:
@@ -79,11 +79,11 @@ class View:
         Args:
             userId (str): The userId to attempt enrollment with.
         """
-        password = input("Select Your password: ")
+        password = input("Select Your Password: ")
 
         nickname = input("Select Your Nickname: ")
 
-        print("Select Your Role: \n")
+        print("\nSelect Your Role: \n")
         print("Client: 1")
         print("Premium Client: 2")
         print("Financial Planner: 3")
