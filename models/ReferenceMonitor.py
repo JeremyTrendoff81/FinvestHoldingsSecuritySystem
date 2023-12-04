@@ -22,6 +22,15 @@ class ReferenceMonitor:
         self._permissionsMatrix = matrixDictonary
 
     def getPermissionsForRole(self, role: Role) -> list:
+        """
+        Retrieve the permissions for a given role from the access control matrix. 
+
+        Args:
+            role (Role): The role to target.
+
+        Returns:
+            list: A list of string tuples formatted (Permission Name, Permitted Action)
+        """
         permissionsList = []
 
         if (role in self._permissionsMatrix):

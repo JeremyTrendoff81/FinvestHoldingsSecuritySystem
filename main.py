@@ -1,8 +1,15 @@
 from models.User import User
 from models.Role import Role
 from models.ReferenceMonitor import ReferenceMonitor
+from models.PasswordFileManager import PasswordFileManager
 
 def initDemoUsers() -> list:
+    """Initialize the System with Demo Users
+
+    Returns:
+        list: The list of users in the system.
+    """
+
     userList = []
 
     mischa_lowery = User("mischa", "Mischa Lowery", Role.CLIENT)
